@@ -3,3 +3,4 @@
 *.txt
 *.yaml
 *.cfg
+airflow.cfg

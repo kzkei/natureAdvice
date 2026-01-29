@@ -1,9 +1,10 @@
 *.env
 *.log
-*.txt
 *.yaml
 *.cfg
 airflow.cfg
 airflow/config/airflow.cfg
 airflow/logs/
 airflow/plugins/
+
+/myenv

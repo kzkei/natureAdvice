@@ -1,28 +1,20 @@
 import requests
 import psycopg2
+from utils import conn_ops
 from datetime import datetime
-
-# Db config to connect
-DB_CONFIG = {
-    'host': 'localhost',
-    'port': 5433,
-    'user': 'natureadvice',
-    'password': 'natureadvice23',
-    'database': 'natureadvice'
-}
 
 # EXTRACT locations from locations table
 def extract_location_metadata():
-    # pyscopg2 is used for postgres adapted connection
-    conn = psycopg2.connect(**DB_CONFIG)
-    cursor = conn.cursor()
+    # TODO logging, error handling
+
+    # connect
+    conn, cursor = conn_ops.open()
 
     # execute fetch SQL into locations
     cursor.execute("SELECT * FROM locations;")
     locations = cursor.fetchall()
 
-    cursor.close()
-    conn.close()
+    conn_ops.close(conn=conn, cursor=cursor)
 
 # return converted tuples in list of dict
     return [
@@ -62,21 +54,58 @@ def extract_weather_metadata(lat, lon, tz):
     }
 
     response = requests.get(url, params=params)
-    # print(response.url)
-    # print(response.text)
     response.raise_for_status()
-
-    # print(response)
 
     return response.json()
 
-# transform weather data into schema
+# transform weather data into defined schema
 def transform_weather(raw):
     daily = raw['daily']
 
-    return
+    # append each respective raw i data to forecasts list of dict
+    forecasts = []
+    for i in range(len(daily['time'])):
+        forecasts.append({
+            'forecast_date': daily['time'][i],
+            'temp_high_f': daily['temperature_2m_max'][i],
+            'temp_low_f': daily['temperature_2m_min'][i],
+            'precipitation_chance': daily['precipitation_probability_max'][i],
+            'wind_speed_mph': daily['wind_speed_10m_max'][i],
+            'uv_index': daily['uv_index_max'][i]
+        })
 
+    # print(forecasts)
+    return forecasts
+
+# leave load for L file
+
+# to test ETL flow
 def main():
+
+    print("starting test ETL")
+
+    locations = extract_location_metadata()
+
+    print(f"extracting and transforming weather data for {len(locations)} locations")
+
+    forecasts = []
+    for location in locations:
+        weather_raw = extract_weather_metadata(
+        location['latitude'],
+        location['longitude'],
+        location['timezone']
+        )
+        # transform every locations raw weather metadata
+        transformed = transform_weather(weather_raw)
+        
+        # append transformed to forecasts list
+        forecasts.append({
+            'location_id': location['id'],
+            'forecasts': transformed
+        })
+
+    print(forecasts)
+    print("L not in test pipeline")
 
     return
 

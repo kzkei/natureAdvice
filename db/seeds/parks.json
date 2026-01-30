@@ -1,0 +1,83 @@
+[
+  {
+    "name": "Yosemite National Park",
+    "park_code": "YosemiteNP",
+    "latitude": 37.8651,
+    "longitude": -119.5383,
+    "state": "CA",
+    "region": "West",
+    "elevation_ft": 4000,
+    "timezone": "America/Los_Angeles"
+  },
+  {
+    "name": "Grand Canyon National Park",
+    "park_code": "GCNP",
+    "latitude": 36.06,
+    "longitude": -112.14,
+    "state": "AZ",
+    "region": "West",
+    "elevation_ft": 6800,
+    "timezone": "America/Phoenix"
+  },
+  {
+    "name": "Zion National Park",
+    "park_code": "ZNP",
+    "latitude": 37.2982,
+    "longitude": -113.0263,
+    "state": "UT",
+    "region": "West",
+    "elevation_ft": 4000,
+    "timezone": "America/Denver"
+  },
+  {
+    "name": "Yellowstone National Park",
+    "park_code": "YNP",
+    "latitude": 44.428,
+    "longitude": -110.5885,
+    "state": "WY",
+    "region": "West",
+    "elevation_ft": 8000,
+    "timezone": "America/Denver"
+  },
+  {
+    "name": "Glacier National Park",
+    "park_code": "GNP",
+    "latitude": 48.7596,
+    "longitude": -113.787,
+    "state": "MT",
+    "region": "West",
+    "elevation_ft": 6646,
+    "timezone": "America/Denver"
+  },
+  {
+    "name": "Great Smoky Mountains National Park",
+    "park_code": "GRSM",
+    "latitude": 35.68,
+    "longitude": -83.53,
+    "state": "TN",
+    "region": "Southeast",
+    "elevation_ft": 6643,
+    "timezone": "America/New_York"
+  },
+  {
+    "name": "Acadia National Park",
+    "park_code": "ACAD",
+    "latitude": 44.35,
+    "longitude": -68.21,
+    "state": "ME",
+    "region": "Northeast",
+    "elevation_ft": 1530,
+    "timezone": "America/New_York"
+  },
+  {
+    "name": "Arches National Park",
+    "park_code": "ARCH",
+    "latitude": 38.68,
+    "longitude": -109.57,
+    "state": "UT",
+    "region": "West",
+    "elevation_ft": 5653,
+    "timezone": "America/Denver"
+  }
+
+]

@@ -1,9 +1,15 @@
 import requests
 from utils import conn_ops
+import logging
 
-# EXTRACT location weather
+# setup logging
+logger = logging.getLogger(__name__)
+
+# EXTRACT location weather from OpenMeteo
+# returns raw weather data json
 def extract_weather_data(lat, lon, timezone):
-    # TODO logging, error handling
+    logger.info("Starting api weather extraction")
+
 
     url = "https://api.open-meteo.com/v1/forecast"
 
@@ -23,7 +29,11 @@ def extract_weather_data(lat, lon, timezone):
         'timezone': timezone,
     }
 
+    logger.debug(f"lat and lon are {lat} and {lon}")
+
     response = requests.get(url, params=params, timeout=15)
     response.raise_for_status()
+
+    logger.info("weather extraction complete")
 
     return response.json()

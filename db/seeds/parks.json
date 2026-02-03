@@ -78,6 +78,555 @@
     "region": "West",
     "elevation_ft": 5653,
     "timezone": "America/Denver"
+  },
+  {
+    "name": "American Samoa National Park",
+    "park_code": "ASNP",
+    "latitude": -14.25,
+    "longitude": -170.68,
+    "state": "AS",
+    "region": "Pacific",
+    "elevation_ft": 500,
+    "timezone": "Pacific/Pago_Pago"
+  },
+  {
+    "name": "Badlands National Park",
+    "park_code": "BADL",
+    "latitude": 43.75,
+    "longitude": -102.50,
+    "state": "SD",
+    "region": "Midwest",
+    "elevation_ft": 2800,
+    "timezone": "America/Chicago"
+  },
+  {
+    "name": "Big Bend National Park",
+    "park_code": "BIBE",
+    "latitude": 29.25,
+    "longitude": -103.25,
+    "state": "TX",
+    "region": "Southwest",
+    "elevation_ft": 3100,
+    "timezone": "America/Chicago"
+  },
+  {
+    "name": "Biscayne National Park",
+    "park_code": "BISC",
+    "latitude": 25.65,
+    "longitude": -80.08,
+    "state": "FL",
+    "region": "Southeast",
+    "elevation_ft": 10,
+    "timezone": "America/New_York"
+  },
+  {
+    "name": "Black Canyon of the Gunnison National Park",
+    "park_code": "BLCA",
+    "latitude": 38.57,
+    "longitude": -107.72,
+    "state": "CO",
+    "region": "West",
+    "elevation_ft": 7400,
+    "timezone": "America/Denver"
+  },
+  {
+    "name": "Bryce Canyon National Park",
+    "park_code": "BRCA",
+    "latitude": 37.57,
+    "longitude": -112.18,
+    "state": "UT",
+    "region": "West",
+    "elevation_ft": 8000,
+    "timezone": "America/Denver"
+  },
+  {
+    "name": "Canyonlands National Park",
+    "park_code": "CANY",
+    "latitude": 38.20,
+    "longitude": -109.93,
+    "state": "UT",
+    "region": "West",
+    "elevation_ft": 6200,
+    "timezone": "America/Denver"
+  },
+  {
+    "name": "Capitol Reef National Park",
+    "park_code": "CARE",
+    "latitude": 38.20,
+    "longitude": -111.17,
+    "state": "UT",
+    "region": "West",
+    "elevation_ft": 6500,
+    "timezone": "America/Denver"
+  },
+  {
+    "name": "Carlsbad Caverns National Park",
+    "park_code": "CAVE",
+    "latitude": 32.17,
+    "longitude": -104.44,
+    "state": "NM",
+    "region": "Southwest",
+    "elevation_ft": 3500,
+    "timezone": "America/Denver"
+  },
+  {
+    "name": "Channel Islands National Park",
+    "park_code": "CHIS",
+    "latitude": 34.01,
+    "longitude": -119.42,
+    "state": "CA",
+    "region": "West",
+    "elevation_ft": 1200,
+    "timezone": "America/Los_Angeles"
+  },
+  {
+    "name": "Congaree National Park",
+    "park_code": "CONG",
+    "latitude": 33.78,
+    "longitude": -80.78,
+    "state": "SC",
+    "region": "Southeast",
+    "elevation_ft": 150,
+    "timezone": "America/New_York"
+  },
+  {
+    "name": "Crater Lake National Park",
+    "park_code": "CRLA",
+    "latitude": 42.94,
+    "longitude": -122.10,
+    "state": "OR",
+    "region": "West",
+    "elevation_ft": 6200,
+    "timezone": "America/Los_Angeles"
+  },
+  {
+    "name": "Cuyahoga Valley National Park",
+    "park_code": "CUVA",
+    "latitude": 41.24,
+    "longitude": -81.55,
+    "state": "OH",
+    "region": "Midwest",
+    "elevation_ft": 1100,
+    "timezone": "America/New_York"
+  },
+  {
+    "name": "Death Valley National Park",
+    "park_code": "DEVA",
+    "latitude": 36.24,
+    "longitude": -116.82,
+    "state": "CA",
+    "region": "West",
+    "elevation_ft": -282,
+    "timezone": "America/Los_Angeles"
+  },
+  {
+    "name": "Denali National Park and Preserve",
+    "park_code": "DENA",
+    "latitude": 63.33,
+    "longitude": -150.50,
+    "state": "AK",
+    "region": "Alaska",
+    "elevation_ft": 4000,
+    "timezone": "America/Anchorage"
+  },
+  {
+    "name": "Dry Tortugas National Park",
+    "park_code": "DRTO",
+    "latitude": 24.63,
+    "longitude": -82.87,
+    "state": "FL",
+    "region": "Southeast",
+    "elevation_ft": 10,
+    "timezone": "America/New_York"
+  },
+  {
+    "name": "Everglades National Park",
+    "park_code": "EVER",
+    "latitude": 25.32,
+    "longitude": -80.93,
+    "state": "FL",
+    "region": "Southeast",
+    "elevation_ft": 8,
+    "timezone": "America/New_York"
+  },
+  {
+    "name": "Gates of the Arctic National Park and Preserve",
+    "park_code": "GAAR",
+    "latitude": 67.78,
+    "longitude": -153.30,
+    "state": "AK",
+    "region": "Alaska",
+    "elevation_ft": 1200,
+    "timezone": "America/Anchorage"
+  },
+  {
+    "name": "Gateway Arch National Park",
+    "park_code": "GRST",
+    "latitude": 38.63,
+    "longitude": -90.19,
+    "state": "MO",
+    "region": "Midwest",
+    "elevation_ft": 400,
+    "timezone": "America/Chicago"
+  },
+  {
+    "name": "Glacier Bay National Park and Preserve",
+    "park_code": "GLBA",
+    "latitude": 58.45,
+    "longitude": -135.32,
+    "state": "AK",
+    "region": "Alaska",
+    "elevation_ft": 1500,
+    "timezone": "America/Juneau"
+  },
+  {
+    "name": "Grand Teton National Park",
+    "park_code": "GRTE",
+    "latitude": 43.79,
+    "longitude": -110.68,
+    "state": "WY",
+    "region": "West",
+    "elevation_ft": 6900,
+    "timezone": "America/Denver"
+  },
+  {
+    "name": "Great Basin National Park",
+    "park_code": "GRBA",
+    "latitude": 38.98,
+    "longitude": -114.30,
+    "state": "NV",
+    "region": "West",
+    "elevation_ft": 6500,
+    "timezone": "America/Denver"
+  },
+  {
+    "name": "Great Sand Dunes National Park and Preserve",
+    "park_code": "GRSA",
+    "latitude": 37.73,
+    "longitude": -105.51,
+    "state": "CO",
+    "region": "West",
+    "elevation_ft": 8200,
+    "timezone": "America/Denver"
+  },
+  {
+    "name": "Guadalupe Mountains National Park",
+    "park_code": "GUMO",
+    "latitude": 31.89,
+    "longitude": -104.87,
+    "state": "TX",
+    "region": "Southwest",
+    "elevation_ft": 8000,
+    "timezone": "America/Chicago"
+  },
+  {
+    "name": "Haleakalā National Park",
+    "park_code": "HALE",
+    "latitude": 20.72,
+    "longitude": -156.17,
+    "state": "HI",
+    "region": "Pacific",
+    "elevation_ft": 9000,
+    "timezone": "Pacific/Honolulu"
+  },
+  {
+    "name": "Hawaiʻi Volcanoes National Park",
+    "park_code": "HAVO",
+    "latitude": 19.42,
+    "longitude": -155.29,
+    "state": "HI",
+    "region": "Pacific",
+    "elevation_ft": 4200,
+    "timezone": "Pacific/Honolulu"
+  },
+  {
+    "name": "Hot Springs National Park",
+    "park_code": "HOSP",
+    "latitude": 34.51,
+    "longitude": -93.05,
+    "state": "AR",
+    "region": "South",
+    "elevation_ft": 600,
+    "timezone": "America/Chicago"
+  },
+  {
+    "name": "Indiana Dunes National Park",
+    "park_code": "INDU",
+    "latitude": 41.65,
+    "longitude": -87.05,
+    "state": "IN",
+    "region": "Midwest",
+    "elevation_ft": 700,
+    "timezone": "America/Chicago"
+  },
+  {
+    "name": "Isle Royale National Park",
+    "park_code": "ISRO",
+    "latitude": 48.10,
+    "longitude": -88.55,
+    "state": "MI",
+    "region": "Midwest",
+    "elevation_ft": 800,
+    "timezone": "America/New_York"
+  },
+  {
+    "name": "Joshua Tree National Park",
+    "park_code": "JOTR",
+    "latitude": 33.87,
+    "longitude": -115.90,
+    "state": "CA",
+    "region": "West",
+    "elevation_ft": 3000,
+    "timezone": "America/Los_Angeles"
+  },
+  {
+    "name": "Katmai National Park and Preserve",
+    "park_code": "KATM",
+    "latitude": 58.60,
+    "longitude": -155.00,
+    "state": "AK",
+    "region": "Alaska",
+    "elevation_ft": 2000,
+    "timezone": "America/Anchorage"
+  },
+  {
+    "name": "Kenai Fjords National Park",
+    "park_code": "KEFJ",
+    "latitude": 59.92,
+    "longitude": -149.65,
+    "state": "AK",
+    "region": "Alaska",
+    "elevation_ft": 500,
+    "timezone": "America/Anchorage"
+  },
+  {
+    "name": "Kobuk Valley National Park",
+    "park_code": "KOVA",
+    "latitude": 67.55,
+    "longitude": -159.28,
+    "state": "AK",
+    "region": "Alaska",
+    "elevation_ft": 400,
+    "timezone": "America/Anchorage"
+  },
+  {
+    "name": "Lake Clark National Park and Preserve",
+    "park_code": "LACL",
+    "latitude": 60.97,
+    "longitude": -153.42,
+    "state": "AK",
+    "region": "Alaska",
+    "elevation_ft": 2000,
+    "timezone": "America/Anchorage"
+  },
+  {
+    "name": "Lassen Volcanic National Park",
+    "park_code": "LAVO",
+    "latitude": 40.49,
+    "longitude": -121.51,
+    "state": "CA",
+    "region": "West",
+    "elevation_ft": 5600,
+    "timezone": "America/Los_Angeles"
+  },
+  {
+    "name": "Mammoth Cave National Park",
+    "park_code": "MACA",
+    "latitude": 37.18,
+    "longitude": -86.10,
+    "state": "KY",
+    "region": "South",
+    "elevation_ft": 800,
+    "timezone": "America/Chicago"
+  },
+  {
+    "name": "Mesa Verde National Park",
+    "park_code": "MEVE",
+    "latitude": 37.23,
+    "longitude": -108.46,
+    "state": "CO",
+    "region": "West",
+    "elevation_ft": 7000,
+    "timezone": "America/Denver"
+  },
+  {
+    "name": "Mount Rainier National Park",
+    "park_code": "MORA",
+    "latitude": 46.85,
+    "longitude": -121.76,
+    "state": "WA",
+    "region": "West",
+    "elevation_ft": 5400,
+    "timezone": "America/Los_Angeles"
+  },
+  {
+    "name": "New River Gorge National Park and Preserve",
+    "park_code": "NERI",
+    "latitude": 38.07,
+    "longitude": -81.08,
+    "state": "WV",
+    "region": "Appalachia",
+    "elevation_ft": 2000,
+    "timezone": "America/New_York"
+  },
+  {
+    "name": "North Cascades National Park",
+    "park_code": "NOCA",
+    "latitude": 48.77,
+    "longitude": -121.30,
+    "state": "WA",
+    "region": "West",
+    "elevation_ft": 4500,
+    "timezone": "America/Los_Angeles"
+  },
+  {
+    "name": "Olympic National Park",
+    "park_code": "OLYM",
+    "latitude": 47.97,
+    "longitude": -123.50,
+    "state": "WA",
+    "region": "West",
+    "elevation_ft": 2000,
+    "timezone": "America/Los_Angeles"
+  },
+  {
+    "name": "Petrified Forest National Park",
+    "park_code": "PEFO",
+    "latitude": 34.91,
+    "longitude": -109.78,
+    "state": "AZ",
+    "region": "Southwest",
+    "elevation_ft": 5400,
+    "timezone": "America/Phoenix"
+  },
+  {
+    "name": "Pinnacles National Park",
+    "park_code": "PINN",
+    "latitude": 36.49,
+    "longitude": -121.16,
+    "state": "CA",
+    "region": "West",
+    "elevation_ft": 1300,
+    "timezone": "America/Los_Angeles"
+  },
+  {
+    "name": "Redwood National and State Parks",
+    "park_code": "REDW",
+    "latitude": 41.30,
+    "longitude": -124.00,
+    "state": "CA",
+    "region": "West",
+    "elevation_ft": 1500,
+    "timezone": "America/Los_Angeles"
+  },
+  {
+    "name": "Rocky Mountain National Park",
+    "park_code": "ROMO",
+    "latitude": 40.40,
+    "longitude": -105.58,
+    "state": "CO",
+    "region": "West",
+    "elevation_ft": 9000,
+    "timezone": "America/Denver"
+  },
+  {
+    "name": "Saguaro National Park",
+    "park_code": "SAGU",
+    "latitude": 32.25,
+    "longitude": -110.50,
+    "state": "AZ",
+    "region": "Southwest",
+    "elevation_ft": 2600,
+    "timezone": "America/Phoenix"
+  },
+  {
+    "name": "Sequoia National Park",
+    "park_code": "SEQU",
+    "latitude": 36.49,
+    "longitude": -118.83,
+    "state": "CA",
+    "region": "West",
+    "elevation_ft": 7000,
+    "timezone": "America/Los_Angeles"
+  },
+  {
+    "name": "Shenandoah National Park",
+    "park_code": "SHEN",
+    "latitude": 38.53,
+    "longitude": -78.43,
+    "state": "VA",
+    "region": "Appalachia",
+    "elevation_ft": 3500,
+    "timezone": "America/New_York"
+  },
+  {
+    "name": "Theodore Roosevelt National Park",
+    "park_code": "THRO",
+    "latitude": 46.97,
+    "longitude": -103.45,
+    "state": "ND",
+    "region": "Great Plains",
+    "elevation_ft": 2400,
+    "timezone": "America/Chicago"
+  },
+  {
+    "name": "Virgin Islands National Park",
+    "park_code": "VIIS",
+    "latitude": 18.33,
+    "longitude": -64.73,
+    "state": "VI",
+    "region": "Caribbean",
+    "elevation_ft": 200,
+    "timezone": "America/St_Thomas"
+  },
+  {
+    "name": "Voyageurs National Park",
+    "park_code": "VOYA",
+    "latitude": 48.50,
+    "longitude": -92.88,
+    "state": "MN",
+    "region": "Midwest",
+    "elevation_ft": 1100,
+    "timezone": "America/Chicago"
+  },
+  {
+    "name": "White Sands National Park",
+    "park_code": "WHSA",
+    "latitude": 32.78,
+    "longitude": -106.17,
+    "state": "NM",
+    "region": "Southwest",
+    "elevation_ft": 4000,
+    "timezone": "America/Denver"
+  },
+  {
+    "name": "Wind Cave National Park",
+    "park_code": "WICA",
+    "latitude": 43.56,
+    "longitude": -103.48,
+    "state": "SD",
+    "region": "Midwest",
+    "elevation_ft": 3500,
+    "timezone": "America/Chicago"
+  },
+  {
+    "name": "Wrangell–St. Elias National Park and Preserve",
+    "park_code": "WRST",
+    "latitude": 61.31,
+    "longitude": -142.01,
+    "state": "AK",
+    "region": "Alaska",
+    "elevation_ft": 2200,
+    "timezone": "America/Anchorage"
+  },
+  {
+  "name": "Kings Canyon National Park",
+  "park_code": "KICA",
+  "latitude": 36.88,
+  "longitude": -118.55,
+  "state": "CA",
+  "region": "West",
+  "elevation_ft": 4600,
+  "timezone": "America/Los_Angeles"
   }
-
 ]

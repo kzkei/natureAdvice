@@ -1,8 +1,16 @@
+import logging
+
+# setup logging
+logger = logging.getLogger(__name__)
+
 # normalize weather data for defined schema
+# returns normalized weather data
 def transform_weather(raw):
-    # TODO logging, error handling
-    
+    logger.info("Starting raw weather transformation")
+
     daily = raw['daily']
+
+    logger.debug(f"raw data passed: {raw}")
 
     # append each respective raw i data to forecasts list of dict
     forecasts = []
@@ -15,5 +23,7 @@ def transform_weather(raw):
             'wind_speed_mph': daily['wind_speed_10m_max'][i],
             'uv_index': daily['uv_index_max'][i]
         })
+
+    logger.info("raw data normalizing complete")
 
     return forecasts

@@ -1,9 +1,13 @@
-import psycopg2
+import psycopg2, logging
 from utils import conn_ops
 
+# setup logging
+logger = logging.getLogger(__name__)
+
 # EXTRACT locations from locations table (seeded and or added via API CREATE (*))
-def extract_location_metadata():
-    # TODO logging, error handling
+# returns extracted locations
+def extract_location_data():
+    logger.info("Starting location extraction")
 
     # open psycop conn
     conn, cursor = conn_ops.open()
@@ -12,10 +16,14 @@ def extract_location_metadata():
     cursor.execute("SELECT * FROM locations;")
     locations = cursor.fetchall()
 
+    logger.debug(f"locations extracted: {locations}")
+
     # close
     conn_ops.close(conn=conn, cursor=cursor)
 
-# return converted tuples in list of dict
+    logger.info("location extraction complete")
+
+    # return converted tuples in list of dict
     return [
         {
             'id': row[0],

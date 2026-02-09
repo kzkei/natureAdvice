@@ -59,14 +59,14 @@ def forecast_pipeline():
                 # transform raw location weather data
                 transformed = transform_weather(entry['weather_raw'])
 
-                # load normalized forecast
+                # load normalized forecasts into forecasts all time and latest tables (via load.py)
                 load_forecasts(location_id=entry['location_id'], forecasts=transformed)
                 results.append(entry['location_id'])
 
             except Exception as e:
                 logger.error(f"failed to transform/load entry {entry['location_id']}: {e}")
 
-        return results
+        return len(results)
     
     # define dag flow of sequential steps
     locations = get_locations()

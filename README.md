@@ -1,6 +1,8 @@
 # natureAdvice
 The purpose of this project is to dynamically recommend points of interest, initially national parks in the US, with 14-day forecast data in mind to aid in planning a visit!
 
+This project is: end-to-end data engineering project where Airflow DAG schedules ETL pipeline (Extract: Open-Meteo API -> Transform: data normalization -> Load: postgreSQL). Go REST API serves dynamic park recs by computing visit-quality scores from stored weather forecasts. System processes (initially 63) 63+ locations, refreshes every 6 hours, maintains 14-day forecast horizon
+
 This repository includes:
 - the backend system which defines, and handles, available data as well as data to serve to endpoint requests
 - an end-to-end Python ETL pipepline that gathers, cleans and loads forecast data every 6 hours with Airflow/DAG integration
@@ -44,4 +46,4 @@ To use:
     Note: date param in url is of 3000-01-31 format
 
 
-// to add: response models, POST location endpoint implementation, forecast and latest loc name, history, confidence&volitality, optional region param, defensive programming wherever see fit 
+// to add: response models for data minimization, POST location endpoint implementation, forecast and latest loc name, history, confidence&volitality, optional region param, defensive programming wherever see fit 

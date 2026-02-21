@@ -5,7 +5,7 @@ from utils import conn_ops
 logger = logging.getLogger(__name__)
 
 # LOAD forecasts into db
-def load_forecasts(location_id, forecasts):
+def load_forecasts(location_id, location_name, region, forecasts):
     logger.info("Starting forecast load")
 
     conn, cursor = conn_ops.open()
@@ -17,11 +17,13 @@ def load_forecasts(location_id, forecasts):
             logger.debug(f"loading weather_forecasts for location_id: {location_id}")
             cursor.execute("""
                 INSERT INTO weather_forecasts 
-                (location_id, forecast_date, temp_high_f, temp_low_f, 
+                (location_id, location_name, region, forecast_date, temp_high_f, temp_low_f, 
                     precipitation_chance, wind_speed_mph, uv_index)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
                 ON CONFLICT (location_id, forecast_date) 
                 DO UPDATE SET
+                    location_name = EXCLUDED.location_name,
+                    region = EXCLUDED.region,
                     temp_high_f = EXCLUDED.temp_high_f,
                     temp_low_f = EXCLUDED.temp_low_f,
                     precipitation_chance = EXCLUDED.precipitation_chance,
@@ -30,6 +32,8 @@ def load_forecasts(location_id, forecasts):
                     fetched_at = NOW()
             """, (
                 location_id,
+                location_name,
+                region,
                 forecast['forecast_date'],
                 forecast['temp_high_f'],
                 forecast['temp_low_f'],
@@ -42,11 +46,13 @@ def load_forecasts(location_id, forecasts):
             logger.debug(f"loading latest_forecast for location_id: {location_id}")
             cursor.execute("""
                 INSERT INTO latest_forecasts 
-                (location_id, forecast_date, temp_high_f, temp_low_f, 
+                (location_id, location_name, region, forecast_date, temp_high_f, temp_low_f, 
                     precipitation_chance, wind_speed_mph, uv_index)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
                 ON CONFLICT (location_id, forecast_date) 
                 DO UPDATE SET
+                    location_name = EXCLUDED.location_name,
+                    region = EXCLUDED.region,
                     temp_high_f = EXCLUDED.temp_high_f,
                     temp_low_f = EXCLUDED.temp_low_f,
                     precipitation_chance = EXCLUDED.precipitation_chance,
@@ -55,6 +61,8 @@ def load_forecasts(location_id, forecasts):
                     fetched_at = NOW()
             """, (
                 location_id,
+                location_name,
+                region,
                 forecast['forecast_date'],
                 forecast['temp_high_f'],
                 forecast['temp_low_f'],

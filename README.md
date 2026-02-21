@@ -46,4 +46,4 @@ To use:
     Note: date param in url is of 3000-01-31 format
 
 
-// to add: response models for data minimization, POST location endpoint implementation, forecast and latest loc name, history, confidence&volitality, optional region param, defensive programming wherever see fit 
+// to add: POST location endpoint implementation, weather history, confidence&volitality, optional region param for rec endpoint, defensive programming wherever see fit 

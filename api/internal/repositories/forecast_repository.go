@@ -16,17 +16,17 @@ func NewForecastRepository(db *sql.DB) *ForecastRepository {
 }
 
 // Get latest loc forecast for a specific date
-func (r *ForecastRepository) GetLatestForecastForDate(location_id int, date time.Time) (*models.Forecast, error) {
+func (r *ForecastRepository) GetLatestForecastForDate(location_name string, date time.Time) (*models.Forecast, error) {
 	var latest_forecast models.Forecast
 
 	err := r.db.QueryRow(`
-        SELECT location_id, forecast_date, temp_high_f, temp_low_f,
-               precipitation_chance, wind_speed_mph, uv_index, fetched_at
+        SELECT location_id, location_name, forecast_date, temp_high_f, temp_low_f,
+               precipitation_chance, wind_speed_mph, uv_index, region, fetched_at
         FROM latest_forecasts
-        WHERE location_id = $1 AND forecast_date = $2
-    `, location_id, date).Scan(
-		&latest_forecast.LocationID, &latest_forecast.Date, &latest_forecast.TempHigh, &latest_forecast.TempLow,
-		&latest_forecast.PrecipChance, &latest_forecast.WindSpeed, &latest_forecast.UVIndex, &latest_forecast.FetchedAt,
+        WHERE LOWER(location_name) = LOWER($1) AND forecast_date = $2
+    `, location_name, date).Scan(
+		&latest_forecast.LocationID, &latest_forecast.LocationName, &latest_forecast.Date, &latest_forecast.TempHigh, &latest_forecast.TempLow,
+		&latest_forecast.PrecipChance, &latest_forecast.WindSpeed, &latest_forecast.UVIndex, &latest_forecast.Region, &latest_forecast.FetchedAt,
 	)
 
 	if err != nil {
@@ -36,15 +36,15 @@ func (r *ForecastRepository) GetLatestForecastForDate(location_id int, date time
 	return &latest_forecast, nil
 }
 
-// Get 14 day forecast for a location
+// Get 14 day forecast for a location by name
 func (r *ForecastRepository) GetLocationForecastByName(location_name string) ([]*models.Forecast, error) {
 	var forecasts []*models.Forecast
 
 	rows, err := r.db.Query(`
-        SELECT location_id, forecast_date, temp_high_f, temp_low_f,
-               precipitation_chance, wind_speed_mph, uv_index, fetched_at
+        SELECT location_id, location_name, forecast_date, temp_high_f, temp_low_f,
+               precipitation_chance, wind_speed_mph, uv_index, region, fetched_at
         FROM weather_forecasts
-        WHERE location_name = $1
+        WHERE LOWER(location_name) = LOWER($1)
         ORDER BY forecast_date ASC
     `, location_name)
 
@@ -56,8 +56,8 @@ func (r *ForecastRepository) GetLocationForecastByName(location_name string) ([]
 	for rows.Next() {
 		var f models.Forecast
 		err := rows.Scan(
-			&f.LocationID, &f.Date, &f.TempHigh, &f.TempLow,
-			&f.PrecipChance, &f.WindSpeed, &f.UVIndex, &f.FetchedAt,
+			&f.LocationID, &f.LocationName, &f.Date, &f.TempHigh, &f.TempLow,
+			&f.PrecipChance, &f.WindSpeed, &f.UVIndex, &f.Region, &f.FetchedAt,
 		)
 		if err != nil {
 			return nil, err
@@ -73,8 +73,8 @@ func (r *ForecastRepository) GetLocationForecastByID(location_id int) ([]*models
 	var forecasts []*models.Forecast
 
 	rows, err := r.db.Query(`
-		SELECT location_id, forecast_date, temp_high_f, temp_low_f,
-			   precipitation_chance, wind_speed_mph, uv_index, fetched_at
+		SELECT location_id, location_name, forecast_date, temp_high_f, temp_low_f,
+			   precipitation_chance, wind_speed_mph, uv_index, region, fetched_at
 		FROM weather_forecasts
 		WHERE location_id = $1
 		ORDER BY forecast_date ASC
@@ -88,8 +88,8 @@ func (r *ForecastRepository) GetLocationForecastByID(location_id int) ([]*models
 	for rows.Next() {
 		var f models.Forecast
 		err := rows.Scan(
-			&f.LocationID, &f.Date, &f.TempHigh, &f.TempLow,
-			&f.PrecipChance, &f.WindSpeed, &f.UVIndex, &f.FetchedAt,
+			&f.LocationID, &f.LocationName, &f.Date, &f.TempHigh, &f.TempLow,
+			&f.PrecipChance, &f.WindSpeed, &f.UVIndex, &f.Region, &f.FetchedAt,
 		)
 		if err != nil {
 			return nil, err
@@ -108,8 +108,8 @@ func (r *ForecastRepository) GetForecastsByDate(date time.Time) ([]*models.Forec
 	var forecasts []*models.Forecast
 
 	rows, err := r.db.Query(`
-        SELECT location_id, forecast_date, temp_high_f, temp_low_f,
-               precipitation_chance, wind_speed_mph, uv_index, fetched_at
+        SELECT location_id, location_name, forecast_date, temp_high_f, temp_low_f,
+               precipitation_chance, wind_speed_mph, uv_index, region, fetched_at
         FROM weather_forecasts
         WHERE forecast_date = $1
         ORDER BY location_id ASC
@@ -123,8 +123,8 @@ func (r *ForecastRepository) GetForecastsByDate(date time.Time) ([]*models.Forec
 	for rows.Next() {
 		var f models.Forecast
 		err := rows.Scan(
-			&f.LocationID, &f.Date, &f.TempHigh, &f.TempLow,
-			&f.PrecipChance, &f.WindSpeed, &f.UVIndex, &f.FetchedAt,
+			&f.LocationID, &f.LocationName, &f.Date, &f.TempHigh, &f.TempLow,
+			&f.PrecipChance, &f.WindSpeed, &f.UVIndex, &f.Region, &f.FetchedAt,
 		)
 		if err != nil {
 			return nil, err

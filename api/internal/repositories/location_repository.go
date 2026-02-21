@@ -15,13 +15,13 @@ func NewLocationRepository(db *sql.DB) *LocationRepository {
 }
 
 // CreateLocation creates a new location entity in the database
-func (r *LocationRepository) CreateLocation(name string, latitude, longitude float64) (int64, error) {
+func (r *LocationRepository) CreateLocation(name, region, state string, latitude, longitude float64) (int64, error) {
 	var id int64
 	err := r.db.QueryRow(`
-		INSERT INTO locations (name, latitude, longitude)
-		VALUES ($1, $2, $3)
+		INSERT INTO locations (name, region, state, latitude, longitude)
+		VALUES ($1, $2, $3, $4, $5)
 		RETURNING id
-	`, name, latitude, longitude).Scan(&id)
+	`, name, region, state, latitude, longitude).Scan(&id)
 	if err != nil {
 		return 0, err
 	}
@@ -30,7 +30,7 @@ func (r *LocationRepository) CreateLocation(name string, latitude, longitude flo
 
 // GetLocations retrieves all location entites from the database
 func (r *LocationRepository) GetLocations() ([]*models.Location, error) {
-	rows, err := r.db.Query(`SELECT id, name, latitude, longitude FROM locations`)
+	rows, err := r.db.Query(`SELECT id, name, park_code, latitude, longitude, state, region FROM locations`)
 	if err != nil {
 		return nil, err
 	}
@@ -39,7 +39,7 @@ func (r *LocationRepository) GetLocations() ([]*models.Location, error) {
 	var locations []*models.Location
 	for rows.Next() {
 		var loc models.Location
-		if err := rows.Scan(&loc.ID, &loc.Name, &loc.Latitude, &loc.Longitude); err != nil {
+		if err := rows.Scan(&loc.ID, &loc.Name, &loc.ParkCode, &loc.Latitude, &loc.Longitude, &loc.State, &loc.Region); err != nil {
 			return nil, err
 		}
 		locations = append(locations, &loc)
@@ -63,10 +63,10 @@ func (r *LocationRepository) LocationExistsByName(name string) (bool, error) {
 func (r *LocationRepository) GetLocationByName(name string) (*models.Location, error) {
 	var loc models.Location
 	err := r.db.QueryRow(`
-		SELECT id, name, latitude, longitude
+		SELECT id, name, park_code, latitude, longitude, state, region
 		FROM locations
 		WHERE LOWER(name) = LOWER($1)
-	`, name).Scan(&loc.ID, &loc.Name, &loc.Latitude, &loc.Longitude)
+	`, name).Scan(&loc.ID, &loc.Name, &loc.ParkCode, &loc.Latitude, &loc.Longitude, &loc.State, &loc.Region)
 	if err != nil {
 		return nil, err
 	}

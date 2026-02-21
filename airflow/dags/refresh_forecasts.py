@@ -43,6 +43,8 @@ def forecast_pipeline():
                 
                 raw_forecasts.append(
                     {'location_id': loc['id'],
+                     'location_name': loc['name'],
+                     'region': loc['region'],
                     'weather_raw': weather})
 
             except Exception as e:
@@ -60,7 +62,11 @@ def forecast_pipeline():
                 transformed = transform_weather(entry['weather_raw'])
 
                 # load normalized forecasts into forecasts all time and latest tables (via load.py)
-                load_forecasts(location_id=entry['location_id'], forecasts=transformed)
+                load_forecasts(location_id=entry['location_id'],
+                        location_name=entry['location_name'],
+                        region=entry['region'],
+                        forecasts=transformed
+                        )
                 results.append(entry['location_id'])
 
             except Exception as e:

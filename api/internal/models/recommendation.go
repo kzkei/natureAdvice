@@ -1,14 +1,12 @@
 package models
 
-import "time"
-
 // Recommendation for a location on a specific date with a score
 type Recommendation struct {
-	LocationID int `json:"location_id"`
-	// LocationName string    `json:"location_name"` // for future use - easier, clearer access after migration
-	// Region string    `json:"region"` // for future use - to allow filtering by region without another db call
-	Date  time.Time `json:"date"`
-	Score float64   `json:"score"`
+	LocationID   int     `json:"location_id"`
+	LocationName string  `json:"location_name"`
+	Region       string  `json:"region"`
+	Date         string  `json:"date"`
+	Score        float64 `json:"score"`
 	// Confidence   float64   `json:"confidence"` // for future use - how confident we are in the score based on volatility
 	// Volatility   float64   `json:"volatility"` // for future use - how much the score is expected to change based on forecast volatility measured by history
 	TempHigh     float64 `json:"temp_high_f"`

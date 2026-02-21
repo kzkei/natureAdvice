@@ -4,13 +4,15 @@ from transform.normalize import transform_weather
 from load.load import load_forecasts
 import logging
 
+### This main is now void as the ETL process is now orchestrated in a DAG within Airflow
+
 # logging setup for main ETL entry point, can use in entry points elsewhere
 from utils.log_config import setup_logging
 setup_logging()
 
 logger = logging.getLogger(__name__)
 
-# main orchestrates the ETL flow and acts as the main ETL entry point (to be called in DAG) # TODO
+# main orchestrates the ETL flow and acts as the main ETL entry point
 # separates extraction flow from processing flow in a two step process
 def main():
 

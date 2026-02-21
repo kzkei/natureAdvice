@@ -32,7 +32,7 @@ func SetupRouter(db *sql.DB) *gin.Engine {
 	{
 		api.POST("/locations", handler.CreateLocation)
 		api.GET("/locations", handler.GetLocations)
-		api.GET("/locations/:name/forecasts", handler.GetLocationForecast)          // single location forecasts (14 days)
+		api.GET("/locations/:name/forecasts", handler.GetLocationForecast)          // single location forecasts (14 days or all available)
 		api.GET("/locations/:name/latest/:date", handler.GetLocationLatestForecast) // single location latest forecast for specified date
 		api.GET("/recommendations/:date", handler.GetRecommendations)               // main idea
 	}

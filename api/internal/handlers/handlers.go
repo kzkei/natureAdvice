@@ -45,6 +45,8 @@ func (h *Handlers) CreateLocation(c *gin.Context) {
 		Name      string  `json:"name" binding:"required"`
 		Latitude  float64 `json:"latitude" binding:"required"`
 		Longitude float64 `json:"longitude" binding:"required"`
+		Region    string  `json:"region"` // optional
+		State     string  `json:"state"`  // optional
 	}
 
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -52,7 +54,7 @@ func (h *Handlers) CreateLocation(c *gin.Context) {
 		return
 	}
 
-	location, err := h.locationRepo.CreateLocation(req.Name, req.Latitude, req.Longitude)
+	location, err := h.locationRepo.CreateLocation(req.Name, req.Region, req.State, req.Latitude, req.Longitude)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -93,26 +95,13 @@ func (h *Handlers) GetLocationForecast(c *gin.Context) {
 		return
 	}
 
-	// get location id for sql query - remove later after 'name' added to forecast and GetLocationForecastByName implemented
-	locID, err := h.locationRepo.GetIDByName(nameStr)
+	// get forecast for location by name
+
+	forecast, err := h.forecastRepo.GetLocationForecastByName(nameStr)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
-
-	forecast, err := h.forecastRepo.GetLocationForecastByID(locID)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	// change forecast struct to include location name // TODO
-	// // get forecast for location
-	// forecast, err := h.forecastRepo.GetLocationForecastByName(nameStr)
-	// if err != nil {
-	// 	c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-	// 	return
-	// }
 
 	c.JSON(http.StatusOK, forecast)
 }
@@ -134,13 +123,6 @@ func (h *Handlers) GetLocationLatestForecast(c *gin.Context) {
 		return
 	}
 
-	// get location id for sql query
-	loc, err := h.locationRepo.GetLocationByName(nameStr)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
 	// parse date
 	dateStr := c.Param("date")
 	date, err := time.Parse("2006-01-02", dateStr)
@@ -150,7 +132,7 @@ func (h *Handlers) GetLocationLatestForecast(c *gin.Context) {
 	}
 
 	// get latest location forecast for date
-	forecast, err := h.forecastRepo.GetLatestForecastForDate(loc.ID, date)
+	forecast, err := h.forecastRepo.GetLatestForecastForDate(nameStr, date)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -188,5 +170,4 @@ func (h *Handlers) GetRecommendations(c *gin.Context) {
 	c.JSON(http.StatusOK, recommendations)
 }
 
-// GET /api/recommendations/:id - to get reccs for a specific location with the full 14-day forecast and location forecast history in mind
-// TODO changes to :name after 'name' added to forecast table
+// GET /api/recommendations/:name - to get reccs for a specific location with the full 14-day forecast and location forecast history in mind

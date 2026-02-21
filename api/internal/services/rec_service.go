@@ -46,19 +46,12 @@ func (s *RecommendationService) GetLocationRecommendationsForDate(date time.Time
 		// score
 		score := s.scoringService.CalculateScore(forecast)
 
-		// get location name - for now just loc id, change to name after 'name' added to forecast table for better visibility TODO
-
-		// name, err := s.locationRepo.GetLocationNameByID(forecast.LocationID)
-		// if err != nil {
-		// 	log.Printf("Error fetching location name for ID %d: %v", forecast.LocationID, err)
-		// 	return nil, err
-		// }
-
 		// create recommendation
 		recommendations = append(recommendations, models.Recommendation{
-			LocationID: forecast.LocationID,
-			// LocationName: name, // for futre use
-			Date:         date,
+			LocationID:   forecast.LocationID,
+			LocationName: forecast.LocationName,
+			Region:       forecast.Region,
+			Date:         date.Format("2006-01-02"),
 			Score:        score,
 			TempHigh:     forecast.TempHigh,
 			TempLow:      forecast.TempLow,

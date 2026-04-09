@@ -1,21 +1,22 @@
 # natureAdvice
-The purpose of this project is to dynamically recommend points of interest, initially national parks in the US, with 14-day forecast data in mind to aid in planning a visit!
 
-This project is: end-to-end data engineering project where Airflow DAG schedules ETL pipeline (Extract: Open-Meteo API -> Transform: data normalization -> Load: postgreSQL). Go REST API serves dynamic park recs by computing visit-quality scores from stored weather forecasts. System processes (initially 63) 63+ locations, refreshes every 6 hours, maintains 14-day forecast horizon
+A personal data engineering project that recommends Us national parsks based on upcoming weather conditions 
 
-This repository includes:
-- the backend system which defines, and handles, available data as well as data to serve to endpoint requests
-- an end-to-end Python ETL pipepline that gathers, cleans and loads forecast data every 6 hours with Airflow/DAG integration
-- a dynamic location/date recommendaton service with optional region and "top N" limit parameters
-- a basic, scalable scoring service that grades locations for ideal visiting conditions
+This project is an end-to-end data engineering project where Airflow DAG schedules ETL pipeline (Extract: Open-Meteo API -> Transform: data normalization -> Load: postgreSQL). Go REST API serves dynamic park recs by computing visit-quality scores from stored weather forecasts. System processes 63 locations, refreshes every 6 hours, maintains 14-day forecast horizon
 
-Skills demonstrated: 
-- Python ETL pipeline design
-- Go REST API design
-- Airflow/DAG integration
-- PostgreSQL schema & migration design
-- Clean Architecture
-- Logging & error handling
+## Architecture
+
+Open-Metoeo API -> Python ETL -> PostgreSQL -> Go REST API
+(Airflow schedules every 6 hours)
+
+## Stack
+
+Pipeline: Python, Airflow
+Storage: PostgreSQL
+API: Go
+Infrastructure: Docker
+
+## Running locally
 
 To use:
 - Go, Docker, Python, PostgreSQL
@@ -36,14 +37,15 @@ To use:
 - pip install -r requirements.txt (in venv if preferred)
 - run python etl/main.py
 - cd api, go run main.go
+
+## Endpoints 
+
 - request at:
     curl "http://localhost:8000/api/...": 
-        GET /locations      // get all locations
-        GET /locations/:name/forecasts      // single location forecast (14 days)
+
+        GET /locations                          // get all locations
+        GET /locations/:name/forecasts          // single location forecast (14 days)
         GET /locations/:name/latest/:date       // single location latest forecast for specified date (within 14 days of current day)
         GET /recommendations/:date?limit=       // main idea, optional limit param (int <= num of available locations)
 
-    Note: date param in url is of 3000-01-31 format
-
-
-// to add: POST location endpoint implementation, weather history, confidence&volitality, optional region param for rec endpoint, defensive programming wherever see fit 
+    Note: date param in url is of YYYY-MM-DD format

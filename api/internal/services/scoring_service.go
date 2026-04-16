@@ -13,7 +13,7 @@ func NewScoringService() *ScoringService {
 	return &ScoringService{}
 }
 
-// CalculateScore calculates a score for a given forecast based on forecast factors
+// CalculateScore calculates a score for a given forecast based on forecast details
 func (s *ScoringService) CalculateScore(forecast *models.Forecast) float64 {
 
 	if forecast == nil {

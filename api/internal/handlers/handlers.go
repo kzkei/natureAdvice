@@ -6,23 +6,19 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/kzkei/natureAdvice/api/internal/repositories"
-
-	"github.com/kzkei/natureAdvice/api/internal/services"
-
 	"github.com/gin-gonic/gin"
 )
 
 type Handlers struct {
-	recService   *services.RecommendationService
-	locationRepo *repositories.LocationRepository
-	forecastRepo *repositories.ForecastRepository
+	recService   recService
+	locationRepo locationRepo
+	forecastRepo forecastRepo
 }
 
 func NewHandlers(
-	recService *services.RecommendationService,
-	locationRepo *repositories.LocationRepository,
-	forecastRepo *repositories.ForecastRepository,
+	recService recService,
+	locationRepo locationRepo,
+	forecastRepo forecastRepo,
 ) *Handlers {
 	return &Handlers{
 		recService:   recService,
@@ -154,7 +150,8 @@ func (h *Handlers) GetRecommendations(c *gin.Context) {
 		return
 	}
 
-	// parse limit
+	// parse limit if exists, default to 10
+	// 63 nat parks only, so if limit is > 63, we can just return all of them without adjusting query logic
 	limit, err := strconv.Atoi(c.DefaultQuery("limit", "10"))
 	if err != nil || limit < 1 {
 		limit = 10 // default to 10

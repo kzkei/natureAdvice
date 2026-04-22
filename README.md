@@ -1,4 +1,4 @@
-# natureAdvice
+# natureAdvice ![Tests](https://github.com/kzkei/natureAdvice/actions/workflows/test.yml/badge.svg)
 
 A personal data engineering project that recommends Us national parsks based on upcoming weather conditions 
 

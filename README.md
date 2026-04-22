@@ -20,11 +20,7 @@ Infrastructure: Docker
 
 To use:
 - Go, Docker, Python, PostgreSQL
-- setup Airflow:
-    cd airflow
-    docker-compose up -d
-    UI at http://localhost:8080
-
+  
 - create .env file at root with contents:
     DB_HOST=localhost
     DB_PORT=5433
@@ -34,9 +30,14 @@ To use:
     API_PORT=8000
 
 - run migrations in /db/migrations
-- pip install -r requirements.txt (in venv if preferred)
-- run python etl/main.py
-- cd api, go run main.go
+
+- setup Airflow:
+    cd airflow
+    docker-compose up -d
+    UI at http://localhost:8080
+    trigger forecast_pipeline DAG manually for immediate data to work with
+
+- cd api && go run main.go
 
 ## Endpoints 
 
